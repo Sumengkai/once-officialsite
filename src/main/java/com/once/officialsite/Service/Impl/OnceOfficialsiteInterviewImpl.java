@@ -190,11 +190,11 @@ public class OnceOfficialsiteInterviewImpl implements OnceOfficialsiteInterviewI
 	public OnceOfficialsiteInterviewRes creatStudentPhoto(@RequestParam("file") MultipartFile file) {
 		String fileName = file.getOriginalFilename().substring(0, file.getOriginalFilename().length() - 4);
 		try {
-			String outputFilePath = "C:\\Users\\lenovo\\Desktop\\日本專案test\\所有照片檔\\" + fileName + ".jpg";
+			String outputFilePath = "C:\\Users\\lenovo\\Desktop\\日本專案test 20230225\\所有照片檔\\" + fileName + ".jpg";
 			FileOutputStream fos = new FileOutputStream(outputFilePath);
-//			byte[] buffer = new byte[1024];
+			byte[] buffer = new byte[1024];
 			int bytesRead;
-			byte[] buffer = file.getBytes();
+//			byte[] buffer = file.getBytes();
 			InputStream is = file.getInputStream();
 			while ((bytesRead = is.read(buffer)) != -1) {
 				fos.write(buffer, 0, bytesRead);
@@ -202,6 +202,7 @@ public class OnceOfficialsiteInterviewImpl implements OnceOfficialsiteInterviewI
 		
 			is.close();
 			fos.close();
+			System.out.println("成功");
 			return new OnceOfficialsiteInterviewRes("成功");
 		} catch (Exception e) {
 			e.printStackTrace();
